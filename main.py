@@ -2,15 +2,23 @@ import spellchecker
 
 sc = spellchecker.SpellChecker()
 
+def replaceChars(text):
+    chars = "\\`*_{}[]()>#+-.!$%^;,=_~"
+    for c in chars:
+        text = text.replace(c, "")
+    return text
+
 while(True):
     sc.printMenu()
 
     txtIn = input()
-    # Add input control here!
+    while not txtIn.isdigit() or not (1 <= int(txtIn) <= 4):
+        print("ERRORE, INSERISCI UN NUMERO DA 1 A 4!")
+        txtIn = input()  # torno all'inizio
 
     if int(txtIn) == 1:
         print("Inserisci la tua frase in Italiano\n")
-        txtIn = input()
+        txtIn = replaceChars(input().lower())
         sc.handleSentence(txtIn,"italian")
         continue
 

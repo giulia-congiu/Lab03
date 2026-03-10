@@ -5,10 +5,15 @@ import multiDictionary as md
 class SpellChecker:
 
     def __init__(self):
-        pass
+        self.paroleSbagliate=[]
+        self.numParoleErrate = None
+        self.tempoDiCalcolo = None
+
 
     def handleSentence(self, txtIn, language):
-        pass
+        Dizionario= md.MultiDictionary(language)
+
+
 
     def printMenu(self):
         print("______________________________\n" +
