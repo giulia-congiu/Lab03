@@ -1,16 +1,17 @@
 class Dictionary:
     def __init__(self):
-        self.dict= {}
+        self.lista=[]
 
-    def loadDictionary(self, nomefile):
-        with open(nomefile, "r", encoding='utf-8') as file:
+    @property  # getter!!
+    def dizionario(self):
+        return self.lista
+
+    def loadDictionary(self, file):
+        with open(file, "r", encoding='utf-8') as file:
             for riga in file:
                 parola = riga.strip()
-                self.dict[parola]=parola
+                self.lista.append(parola)
 
     def printAll(self):
         pass
 
-    @property #getter!!
-    def dict(self):
-        return self._dict

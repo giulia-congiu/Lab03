@@ -2,11 +2,6 @@ import spellchecker
 
 sc = spellchecker.SpellChecker()
 
-def replaceChars(text):
-    chars = "\\`*_{}[]()>#+-.!$%^;,=_~"
-    for c in chars:
-        text = text.replace(c, "")
-    return text
 
 while(True):
     sc.printMenu()
@@ -18,20 +13,23 @@ while(True):
 
     if int(txtIn) == 1:
         print("Inserisci la tua frase in Italiano\n")
-        txtIn = replaceChars(input().lower())
-        sc.handleSentence(txtIn,"italian")
+        txtIn = input().lower()
+        sc.handleSentence(txtIn,"Italian")
         continue
+        # Il continue serve per tornare all'inizio del while dopo
+        # aver gestito un'opzione, così il menu viene ristampato e l'utente
+        # può fare un'altra scelta.
 
     if int(txtIn) == 2:
         print("Inserisci la tua frase in Inglese\n")
-        txtIn = input()
-        sc.handleSentence(txtIn,"english")
+        txtIn = input().lower()
+        sc.handleSentence(txtIn,"English")
         continue
 
     if int(txtIn) == 3:
         print("Inserisci la tua frase in Spagnolo\n")
-        txtIn = input()
-        sc.handleSentence(txtIn,"spanish")
+        txtIn = input().lower()
+        sc.handleSentence(txtIn,"Spanish")
         continue
 
     if int(txtIn) == 4:

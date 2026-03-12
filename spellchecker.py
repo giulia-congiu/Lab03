@@ -11,7 +11,25 @@ class SpellChecker:
 
 
     def handleSentence(self, txtIn, language):
-        Dizionario= md.MultiDictionary(language)
+        self.paroleSbagliate.clear()
+        dizionario= md.MultiDictionary()
+        dizionario.printDic(language)
+        text= replaceChars(txtIn).lower().split()
+
+        inizio = time.time()
+        self.paroleSbagliate.extend(dizionario.searchWord(text))
+        fine = time.time()
+
+        self.tempoDiCalcolo = fine - inizio
+        self.numParoleErrate=len(self.paroleSbagliate)
+
+        print(f"Parole errate usando Contains: {self.numParoleErrate}")
+        print(f"Time elapsed: {self.tempoDiCalcolo:.9f}")
+        for parola in self.paroleSbagliate:
+            print(parola)
+
+
+
 
 
 
@@ -28,4 +46,7 @@ class SpellChecker:
 
 
 def replaceChars(text):
-    pass
+    chars = "\\`*_{}[]()>#+-.!?$%^;,=_~"
+    for c in chars:
+        text = text.replace(c, "")
+    return text
