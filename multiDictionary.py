@@ -24,5 +24,34 @@ class MultiDictionary:
                 parola.corretta= True
         return paroleErrate
 
+    def searchWordLinear(self, words):
+        paroleErrate = []
+        for i in words:
+            parola = rw.RichWord(i)
+            for j in self.dizionario.lista:
+                if i==j:
+                    parola.corretta = True
+                    break
+            if not parola.corretta:
+                paroleErrate.append(parola)
+        return paroleErrate
 
+    def searchWordDichotomic(self, words):
+        paroleErrate = []
+        for i in words:
+            parola = rw.RichWord(i)
+            inizio = 0
+            fine = len(self.dizionario.lista) - 1 #è l'indice dell'ultimo elemento e tengo conto che gli indici partono da 0
 
+            while inizio <= fine:
+                medio = (inizio + fine) // 2
+                if self.dizionario.lista[medio] == i:
+                    parola.corretta = True
+                    break
+                elif self.dizionario.lista[medio] < i: #uso < xchè controlla le stringhe in ordine alfabetico
+                    inizio =  medio +1
+                else:
+                    fine =  medio -1
+            if not parola.corretta:
+                paroleErrate.append(parola)
+        return paroleErrate
