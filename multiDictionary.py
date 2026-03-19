@@ -5,7 +5,7 @@ import richWord as rw
 class MultiDictionary:
 
     def __init__(self):
-        self.dizionario = d.Dictionary() # ← oggetto di tipo Dictionary
+        self.dizionario = d.Dictionary([]) # ← oggetto di tipo Dictionary
 
 
     def printDic(self, language):
@@ -41,10 +41,10 @@ class MultiDictionary:
         for i in words:
             parola = rw.RichWord(i)
             inizio = 0
-            fine = len(self.dizionario.lista) - 1 #è l'indice dell'ultimo elemento e tengo conto che gli indici partono da 0
+            fine = len(self.dizionario.lista) -1 #è l'indice dell'ultimo elemento e tengo conto che gli indici partono da 0
 
-            while inizio <= fine:
-                medio = (inizio + fine) // 2
+            while inizio != fine:
+                medio = inizio + int ((fine - inizio) / 2)
                 if self.dizionario.lista[medio] == i:
                     parola.corretta = True
                     break
